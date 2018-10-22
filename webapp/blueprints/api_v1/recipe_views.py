@@ -20,7 +20,7 @@ class RecipeResource(Resource):
         return jsonify(output)
 
 
-    def post(self):
+    def post(self, recipe_name=None):
         attr_dict = request.get_json()
 
         status, msg = create_recipe(attr_dict)

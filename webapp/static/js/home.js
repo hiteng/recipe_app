@@ -46,7 +46,7 @@ $("#recipe_add_submit").click(function(){
 
     $.ajax({
         type: 'POST',
-        url: '/api/v1/recipe',
+        url: '/api/v1/recipe/'+recipe_name,
         data: JSON.stringify({"recipe_name": recipe_name, "category": category, "serving_size": serving_size,
                         "ingredients": ingredient_list, "instructions": instructions, "notes": notes}),
         success: function(data) {
