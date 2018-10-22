@@ -27,6 +27,12 @@ class ModelQueries(object):
         self.session.delete(model_obj)
         self.session.commit()
 
+    def get_obj(self, model_class, pri_key):
+        return self.session.query(model_class).get(pri_key)
+
+    def get_all_obj(self, model_class):
+        return self.session.query(model_class).all()
+
     def close_session(self):
 
         return self.session.close()

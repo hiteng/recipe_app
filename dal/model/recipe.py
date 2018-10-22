@@ -35,7 +35,22 @@ class Recipe(Base):
     def ingredients(self, value):
         self._ingredients = json.dumps(value)
 
+    def as_dict(self):
+
+        out_dict = {}
+        for c in self.__table__.columns:
+            if c.name in ['category']:
+                out_dict[c.name] = getattr(self, c.name).value
+            elif c.name in ['ingredients']:
+                out_dict[c.name] = getattr(self, c.name)
+            else:
+                out_dict[c.name] = str(getattr(self, c.name))
+
+        return out_dict
+
     ingredients = synonym("_ingredients", descriptor=ingredients)
+
+
 
 
 

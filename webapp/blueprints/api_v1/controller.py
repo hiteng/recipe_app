@@ -35,10 +35,14 @@ def delete_recipe(recipe_name):
     qr_obj.delete_obj(Recipe, recipe_name)
 
 
-def get_all_recipes(recipe_name):
-
-
-
+def get_all_recipes(recipe_name=None):
+    qr_obj = ModelQueries()
+    output_list = []
+    if recipe_name:
+        obj = qr_obj.get_obj(Recipe, recipe_name)
+        return obj.as_dict()
+    objs = qr_obj.get_all_obj(Recipe)
+    return [obj.as_dict() for obj in objs]
 
 
 if __name__ == '__main__':
@@ -51,8 +55,8 @@ if __name__ == '__main__':
 
     #create_recipe(a)
     #update_recipe("Noodles", b)
-    delete_recipe("Pasta")
-
+    #delete_recipe("Pasta")
+    print get_all_recipes()
 
 
 
