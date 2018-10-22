@@ -49,10 +49,16 @@ $("#recipe_add_submit").click(function(){
         url: '/api/v1/recipe',
         data: JSON.stringify({"recipe_name": recipe_name, "category": category, "serving_size": serving_size,
                         "ingredients": ingredient_list, "instructions": instructions, "notes": notes}),
-        success: function(data) { alert('data: ' + data); },
+        success: function(data) {
+            console.log('data: ' + data);
+            location.reload(true);
+             },
         contentType: "application/json",
         dataType: 'json'
     });
+
+
+
 
 //    $.post( "/recipe/add", {"recipe_name": recipe_name, "category": category, "serving_size": serving_size,
 //                        "ingredients": ingredient_list, "instructions": instructions, "notes": notes})
@@ -73,6 +79,36 @@ $("#recipe_add_submit").click(function(){
 //    });
 })
 
+//$("#recipe_add_submit").click(function(){
+//
+//$.ajax({
+//    url: '/recipe/'+,
+//    type: 'DELETE',
+//    success: function(result) {
+//        // Do something with the result
+//    }
+//});
+//
+//})
+
+
 
 
 });
+
+
+
+
+function delete_recipe(recipe_name) {
+
+console.log("delete");
+$.ajax({
+    url: '/api/v1/recipe/'+recipe_name,
+    type: 'DELETE',
+    success: function(result) {
+        console.log(result);
+        location.reload(true);
+    }
+});
+
+}

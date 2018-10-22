@@ -25,15 +25,22 @@ def create_recipe(attr_dict):
 
 
 def update_recipe(recipe_name, attr_dict):
-    qr_obj = ModelQueries()
-    qr_obj.update_obj(Recipe, recipe_name, attr_dict)
-    qr_obj.close_session()
+    try:
+        qr_obj = ModelQueries()
+        qr_obj.update_obj(Recipe, recipe_name, attr_dict)
+        qr_obj.close_session()
+    except Exception as e:
+        return False, "Failed to update recipe by name: {}".format(recipe_name)
+    return True, "Updated recipe by name: {}".format(recipe_name)
 
 
 def delete_recipe(recipe_name):
-    qr_obj = ModelQueries()
-    qr_obj.delete_obj(Recipe, recipe_name)
-
+    try:
+        qr_obj = ModelQueries()
+        qr_obj.delete_obj(Recipe, recipe_name)
+    except Exception as e:
+        return False, "Failed to delete recipe by name: {}".format(recipe_name)
+    return True, "Deleted recipe by name: {}".format(recipe_name)
 
 def get_all_recipes(recipe_name=None):
     qr_obj = ModelQueries()
