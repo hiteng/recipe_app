@@ -1,12 +1,14 @@
 
 
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_restful import Resource, Api
-
+from recipe_app.webapp.blueprints.api_v1.controller import create_recipe
 
 api_v1 = Blueprint("api", __name__)
 
 api = Api(api_v1, prefix="/api/v1")
+
+
 
 
 
@@ -16,8 +18,11 @@ class RecipeResource(Resource):
         return "Recipe"
 
     def post(self):
-        print request.get_json()
-        return "Application"
+        attr_dict = request.get_json()
+
+        status, msg = create_recipe(attr_dict)
+
+        return {"Status": status, "msg": msg}
 
 api.add_resource(RecipeResource, "/recipe")
 
