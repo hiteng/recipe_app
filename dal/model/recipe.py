@@ -24,7 +24,7 @@ class Recipe(Base):
     category = Column(ChoiceType(TYPES))
     notes = Column(Text())
     created = Column(DateTime, nullable=False, default=get_utc_now())
-    modified = Column(DateTime, nullable=False, default=get_utc_now(), onupdate=get_utc_now())
+    modified = Column(DateTime, nullable=False, default=get_utc_now(), onupdate=get_utc_now)
 
     @property
     def ingredients(self):

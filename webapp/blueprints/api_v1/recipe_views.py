@@ -29,7 +29,7 @@ class RecipeResource(Resource):
 
     def put(self, recipe_name=None):
         attr_dict = request.get_json()
-
+        
         status, msg = update_recipe(recipe_name, attr_dict)
 
         return {"Status": status, "msg": msg}

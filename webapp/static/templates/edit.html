@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Meridian Debug Tool{% endblock%}
+{% block head %}{{ super() }}
+
+
+{% endblock %}
+{% block content %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="d-flex order-0">
+        <a class="navbar-brand" href="/">Recipe App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="navbar-collapse collapse justify-content-center order-2" id="collapsingNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="/add">Add</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+<div id="recipe-edit">
+
+      <div class="form-group">
+        <label for="recipe_name">Recipe name</label>
+        <input type="text" class="form-control" id="edit_recipe_name" placeholder="Recipe Name" value="{{recipe.recipe_name}}" readonly>
+      </div>
+      <div class="form-group">
+          <label class="mr-sm-2" for="category">Category</label>
+          <select class="custom-select mr-sm-2" id="edit_category">
+            <option value="veg">Veg</option>
+            <option value="non-veg">Non Veg</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="serving_size">Serving Size</label>
+        <input type="number" min="0" class="form-control" id="edit_serving_size" placeholder="Serving Size" value="{{recipe.serving_size}}">
+      </div>
+
+      <div class="form-group" id="ingredients">
+
+          <div class="form-group">
+            <label for="add_ingredient" class="sr-only">Add Ingredient</label>
+            <input type="text" class="form-control-plaintext" id="add_ingredient" value="Add Ingredient">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" id="edit_ingredient_name" placeholder="Ingredient Name">
+          </div>
+          <button type="submit" id="edit_ingredient_submit" class="btn btn-primary mb-2">Add</button>
+
+          <div id="edit_ingredient_list_div" class="form-group">
+              <ul id="edit_ingredient_list" class="list-group"></ul>
+          </div>
+
+      </div>
+
+      <div class="form-group">
+          <label for="instructions">Instructions</label>
+          <textarea class="form-control" rows="5" id="edit_instructions">{{recipe.instructions}}</textarea>
+      </div>
+
+
+      <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea class="form-control" rows="5" id="edit_notes">{{recipe.notes}}</textarea>
+      </div>
+
+      <button type="submit" id="recipe_edit_submit" class="btn btn-primary">Submit</button>
+
+    </div>
+</div>
+{% endblock %}

@@ -55,15 +55,15 @@ def get_all_recipes(recipe_name=None):
 if __name__ == '__main__':
 
     a = {"recipe_name": "Cake", "ingredients": ["Bun", "Pattie"], "instructions": "Heat it !", "Serving Size": 2,
-         "category": "vegan", "notes": "trying to do "}
+         "category": "veg", "notes": "trying to do "}
 
-    b = {"ingredients": ["Bun", "Pattie", "Cheese"], "instructions": "Heat it !",
-         "category": "vegan", "notes": "trying to do "}
+    b = {"ingredients": ["Bun", "Pattie", "Cheese"], "instructions": "Warm",
+         "category": "veg", "notes": "trying to do "}
 
     #create_recipe(a)
-    #update_recipe("Noodles", b)
+    update_recipe("aaaa", b)
     #delete_recipe("Pasta")
-    print get_all_recipes()
+    #print get_all_recipes()
 
 
 
